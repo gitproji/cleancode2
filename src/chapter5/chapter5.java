@@ -1,5 +1,8 @@
 package chapter5;
 
+import java.io.InputStream;
+import java.net.Socket;
+
 public class chapter5 {
 
     //////* 형식 맞추기 *//////
@@ -46,11 +49,28 @@ public class chapter5 {
     //한 함수가 다른 함수를 호출한다면 두 함수는 세로로 가까이 배치한다.
     //또 가능하다면 호출하는 함수를 호출되는 함수보다 먼저 배치한다.
     //친화도가 높을수록 코드를 가까이 배치한다.
+    static public void assertTrue() {}
+
+    static public void assertTrue(boolean condition) {}
+
+    static public void assertFalse() {}
+
+    static public void assertFalse(boolean condition) {}
 
     //6. 세로 순서
     //호출되는 함수는 호출하는 함수보다 나중에 배치한다.
     //가장 중요한 개념을 가장 먼저 표현한다.
     //세세한 사항은 가장 마지막에 표현한다.
+    public void analyzeFile(File javaFile) throws Exception {
+        ...
+        measureLine(line);
+        ...
+    }
+
+    public  void measureLine(String line) {
+        ...
+    }
+
 
     //7. 가로 형식 맞추기
     //20자에서 60자 사이인 행이 총 행 수의 40%에 달한다.
@@ -64,24 +84,46 @@ public class chapter5 {
     //매개변수는 공백으로 분리해서 별개인 것을 보여준다.
     //
     //연산자 수선순위를 강조하기 위해서도 공백을 사용
-    // (-b + a) / (a*2)
+    (-b + a) / (a*2)
     //연산자같은 경우엔 안타깝게도 나중에 도구에서 없애는 경우가 흔하다
 
     //9. 가로 정렬
     //변수를 선언할 때 가로 정렬해서 선언하면 변수 유형은 무시하고 변수 이름부터 읽게 된다.
+    //<나쁜 코드>
+    private Socket      socket;
+    private InputStream input;
+    private long        requestProgress;
+    private boolean     hasError;
+    //
+    //<좋은 코드>
+    private Socket socket;
+    private InputStream input;
+    private long requestProgress;
+    private boolean hasError;
+    //
     //마찬가지로, 할당문에서도 할당 연산자는 보이지 않고 오른쪽 피연산자에 눈이 간다.
+    //<나쁜 코드>
+    this.context =  context;
+    socket =        s;
+    input =         s.getInputStream();
+    //
+    //<좋은 코드>
+    this.context = context;
+    socket = s;
+    input = s.getInputStream();
+    //
     //정렬하지 않으면 오히려 중대한 결함을 찾기 쉽다.
     //따라서 정렬은 사용하지 마라.
 
     //10. 들여쓰기
     //들여쓰기한 파일은 구조가 한눈에 들어오지만, 들여쓰기 하지 않은 코드는 열심히 분석해야한다.
     //<나쁜 코드>
-    //if(i>9) { return ""; }
+    if(i>9) { return ""; }
     //
     //<좋은 코드>
-//    if(i>9) {
-//        return "";
-//    }
+    if(i>9) {
+        return "";
+    }
 
     //11. 가짜 범위
     //빈 while문이나 for문은 최대한 피하고, 피하지 못할 때는 빈블록을 올바로 들여쓰고 괄호로 감싼다.
