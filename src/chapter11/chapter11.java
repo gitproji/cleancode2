@@ -88,4 +88,9 @@ public class chapter11 {
     //POJO를 작성하고 관점 혹은 관점과 유사한 메커니즘을 사용해 각 구현 관심사를 분리해야 한다.
     //무엇을 설계하든 실제로 돌아가는 가장 단순한 수단을 사용해야한다.
 
+
+    //di를 구현한 것이 솔리드..?
+    //스프링에서 사용하는 di, ioc : @RequiredArgsConstructor
+    //di, ioc, dip 중요함. aop 등
+    //면접에서 매우 중요
 }
